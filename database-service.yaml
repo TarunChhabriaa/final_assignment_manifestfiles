@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: db-service
+  namespace: final
+  labels:
+    name: dbdeployment
+    component: backend
+spec:
+  ports:
+    - port: 3306
+      targetPort: 3306
+  selector:
+    name: dbdeployment
+    component: backend

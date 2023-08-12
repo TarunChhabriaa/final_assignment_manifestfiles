@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dbdeployment
+  namespace: final
+  labels:
+    name: dbdeployment
+    component: backend
+spec:
+  selector:
+    matchLabels:
+      name: dbdeployment
+      component: backend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: dbdeployment
+        component: backend
+    spec:
+      containers:
+      - name: db-pod
+        image: 475376810255.dkr.ecr.us-east-1.amazonaws.com/newdatabase:v1.2
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: DBPWD 
+      
