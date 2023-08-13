@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment
+  namespace: final
+  labels:
+    name: newapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: newapp
+  template:
+    metadata:
+      labels:
+        name: newapp
+    spec:
+      containers:
+        - name: webapp
+          image: 475376810255.dkr.ecr.us-east-1.amazonaws.com/newapp:v1.2
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: BACKGROUND_IMAGE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: group10-configmap
+                  key: BACKGROUND_IMAGE_URL
+            - name: DBHOST
+              value: "db-service.final.svc.cluster.local"
+            - name: DBPORT
+              value: "3306"
+            - name: DBUSER
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: DBUSER
+            - name: DATABASE
+              value: employees
+            - name: DBPWD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: DBPWD
