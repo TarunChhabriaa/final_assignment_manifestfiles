@@ -22,11 +22,11 @@ spec:
           ports:
             - containerPort: 8080
           env:
-            - name: BACKGROUND_IMAGE_URL
+            - name: IMAGE_URL
               valueFrom:
                 configMapKeyRef:
                   name: group10-configmap
-                  key: BACKGROUND_IMAGE_URL
+                  key: IMAGE_URL
             - name: DBHOST
               value: "db-service.final.svc.cluster.local"
             - name: DBPORT
