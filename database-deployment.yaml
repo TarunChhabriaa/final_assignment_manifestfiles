@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: db-pod
-        image: 475376810255.dkr.ecr.us-east-1.amazonaws.com/newdatabase:v1.2
+        image: 967553690170.dkr.ecr.us-east-1.amazonaws.com/newdatabase:v1.2
         imagePullPolicy: Always
         resources:
           requests:
