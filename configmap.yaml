@@ -4,5 +4,5 @@ metadata:
   name: group10-configmap
   namespace: final
 data:
-  BACKGROUND_IMAGE_URL: http://54.162.139.160:30001/download/Casper.jpg
+  BACKGROUND_IMAGE_URL: http://54.225.32.6:30001/download/Casper.jpg
   
