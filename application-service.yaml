@@ -6,8 +6,8 @@ metadata:
 spec:
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 81
+      targetPort: 81
       nodePort: 30001
   selector:
     name: newapp

@@ -20,7 +20,7 @@ spec:
           image: 967553690170.dkr.ecr.us-east-1.amazonaws.com/newapp:v1.2
           imagePullPolicy: Always
           ports:
-            - containerPort: 8080
+            - containerPort: 81
           env:
             - name: IMAGE_URL
               valueFrom:
